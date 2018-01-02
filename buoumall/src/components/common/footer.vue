@@ -1,0 +1,79 @@
+<template>
+  <div class="all">
+
+    <el-footer style="height: 54px;">
+    	<div>
+    		<i class="iconfont">&#xe694;</i>
+    		<p>首页</p>
+    	</div>
+    	<div>
+    		<i class="iconfont">&#xe602;</i>
+    		<p>设计师</p>
+    	</div>
+    	<div>
+    		<i class="iconfont">&#xe5a4;</i>
+    		<p>商店</p>
+    	</div>
+    	<div>
+    		<i class="iconfont">&#xe66f;</i>
+    		<p>购物袋</p>
+    	</div>
+    	<div>
+    		<i class="iconfont">&#xe63a;</i>
+    		<p>我</p>
+    	</div>
+    </el-footer>
+
+  </div>
+</template>
+
+<script>
+export default {
+  name: 'footers'
+}
+</script>
+
+<style lang="scss" scoped>
+ .el-footer {
+ 	display: flex;
+   background-color: #fff;
+   color: #333;
+   justify-content: space-between;
+   padding: 7px 28px 0;
+ }
+ .all{
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  z-index: 2;
+ }
+
+ div{
+ 	  text-align: center;
+
+ }
+
+ p{
+ 	font-size: 12px;
+ 	padding-top: 3px;
+ }
+
+  @font-face {
+  font-family: 'iconfont';
+  src: url('../../assets/font/iconfont.eot');
+  src: url('../../assets/font/iconfont.eot?#iefix') format('embedded-opentype'),
+  url('../../assets/font/iconfont.woff') format('woff'),
+  url('../../assets/font/iconfont.ttf') format('truetype'),
+  url('../../assets/font/iconfont.svg#iconfont') format('svg');
+}
+
+.iconfont{
+  font-family:"iconfont" !important;
+  font-size:22px;font-style:normal;
+  -webkit-font-smoothing: antialiased;
+  -webkit-text-stroke-width: 0.2px;
+  -moz-osx-font-smoothing: grayscale;
+  padding-top: 4px
+}
+</style>
