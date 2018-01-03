@@ -10,7 +10,33 @@ module.exports = {
     // Paths
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',
-    proxyTable: {},
+    proxyTable: {
+        '/v2': {
+              target: 'http://api.buoumall.com',
+              host: 'api.buoumall.com',
+              changeOrigin:true,
+        },
+        '/banner': {
+              target: 'http://api.buoumall.com',
+              host: 'api.buoumall.com',
+              changeOrigin:true,
+        },
+        '/product': {
+              target: 'http://api.buoumall.com',
+              host: 'api.buoumall.com',
+              changeOrigin:true,
+        },
+        '/activity': {
+              target: 'http://api.buoumall.com',
+              host: 'api.buoumall.com',
+              changeOrigin:true,
+        },
+        '/category': {
+              target: 'http://api.buoumall.com',
+              host: 'api.buoumall.com',
+              changeOrigin:true,
+        },
+    },
 
     // Various Dev Server settings
     host: 'localhost', // can be overwritten by process.env.HOST
