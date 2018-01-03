@@ -39,16 +39,20 @@ html,body{
   height:100%;
 } 
 
+.el-container{
+  display: flex;
+  flex-direction:column;
+}
 
  .el-main {
    background-color: #E9EEF3;
    color: #333;
    text-align: center;
-   line-height: 160px;
+   line-height: 1.6rem;
+   flex:1;
  }
  
  .el-container {
-   margin-bottom: 40px;
    flex-direction: column;
  }
  
