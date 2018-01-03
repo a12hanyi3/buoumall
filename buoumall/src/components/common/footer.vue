@@ -44,7 +44,7 @@ export default {
 
  div{
  	  text-align: center;
- 	  margin: auto 0.1rem;
+ 	  margin: auto 0rem;
 
  }
 
