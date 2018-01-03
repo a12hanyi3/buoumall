@@ -1,7 +1,7 @@
 <template>
   <div>
 
-    <el-header style="height: 44px;"><i class="iconfont">&#xe5a4;</i><h1>MAGIC CLOSET</h1><i class="iconfont">&#xe66f;</i></el-header>
+    <el-header style="height:0.4rem"><i class="iconfont">&#xe5a4;</i><h1>MAGIC CLOSET</h1><i class="iconfont">&#xe66f;</i></el-header>
 
   </div>
 </template>
@@ -14,13 +14,6 @@ export default {
 
 <style lang="scss" scoped>
 
-div{
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  z-index: 2;
-}
 
 h1{
   font-size: 20px;
@@ -29,7 +22,7 @@ h1{
    display: flex;
    background-color: #fff;
    color: #333;
-   line-height: 44px;
+   line-height: 0.4rem;
 
    width: 100%;
    justify-content: space-between;
