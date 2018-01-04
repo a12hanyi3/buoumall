@@ -34,7 +34,7 @@ export default new Router({
       component: Product,
     },
     {
-      path: 'special/:id',
+      path: '/special/:id',
       component: Special,
     },
     // {
