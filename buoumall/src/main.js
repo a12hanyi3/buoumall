@@ -7,6 +7,17 @@ import router from './router'
 import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
 
+import MintUI from 'mint-ui'
+import 'mint-ui/lib/style.css'
+import { Swipe, SwipeItem } from 'mint-ui';
+Vue.component(Swipe.name, Swipe);
+Vue.component(SwipeItem.name, SwipeItem);
+Vue.use(MintUI)
+
+new Vue({
+  el: '#app',
+  components: { App }
+})
 
 Vue.use(ElementUI)
 Vue.config.productionTip = false
