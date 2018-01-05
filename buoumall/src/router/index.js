@@ -8,6 +8,8 @@ import Special from '@/components/special'
 import Product from '@/components/product'
 import Design from '@/components/design'
 import Look from '@/components/look'
+import Login from '@/components/login'
+
 
 Vue.use(Router)
 
@@ -45,6 +47,10 @@ export default new Router({
     {
       path: 'look/:id',
       component: Look,
+    },
+    {
+      path: 'login',
+      component: Login,
     },
     {
       path: '*',
