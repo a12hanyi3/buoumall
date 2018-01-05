@@ -2,26 +2,26 @@
   <div class="all">
 
     <el-footer style="height:0.49rem">
-    	<div>
+    	<router-link to="/" tag="div" activeClass="active">
     		<i class="iconfont">&#xe694;</i>
     		<p>首页</p>
-    	</div>
-    	<div>
+    	</router-link>
+    	<router-link to="/designer" tag="div" activeClass="active">
     		<i class="iconfont">&#xe602;</i>
     		<p>设计师</p>
-    	</div>
-    	<div>
+    	</router-link>
+    	<router-link to="/shop" tag="div" activeClass="active">
     		<i class="iconfont">&#xe5a4;</i>
     		<p>商店</p>
-    	</div>
-    	<div>
+    	</router-link>
+    	<router-link to="/product" tag="div" activeClass="active">
     		<i class="iconfont">&#xe66f;</i>
     		<p>购物袋</p>
-    	</div>
-    	<div>
+    	</router-link>
+    	<router-link to="/special" tag="div" activeClass="active">
     		<i class="iconfont">&#xe63a;</i>
     		<p>我</p>
-    	</div>
+    	</router-link>
     </el-footer>
 
   </div>
@@ -34,6 +34,9 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.router-link-exact-active {
+  color:#f00;
+}
  .el-footer {
  	display: flex;
    background-color: #fff;

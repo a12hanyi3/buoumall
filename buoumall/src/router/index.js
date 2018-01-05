@@ -1,7 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import Home from '@/components/home'
-import TodayLook from'@/components/todayLook'
 import Shop from '@/components/shop'
 import Designer from '@/components/designer'
 import Special from '@/components/special'
@@ -16,10 +15,6 @@ export default new Router({
       path: '/',
       name: 'Home',
       component: Home
-    },
-    {
-    	path: '/todaylook',
-    	component: TodayLook
     },
     {
     	path: '/shop',

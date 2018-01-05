@@ -55,10 +55,10 @@ Vue.directive('clk',function(el,binding,vnode){
     for(var i=0;i<p.length;i++){
       p[i].index = i;
       p[i].setAttribute('class','');
-      swp[i].setAttribute('class','mint-swipe-item')
+      //swp[i].setAttribute('class','mint-swipe-item')
     }
     this.setAttribute('class','active');
-    swp[this.index].setAttribute('class','mint-swipe-item is-active');
+    //swp[this.index].setAttribute('class','mint-swipe-item is-active');
     // swp[this.index].style.transform='translate3d(-3.6rem,0,0)'
     // swp[this.index].style.transition='transform 0.5s linear'
   }
