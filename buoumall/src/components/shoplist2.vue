@@ -1,17 +1,18 @@
 <template>
 	<swipe class="my-swipe" :auto="0" :showIndicators="false" >
 		<swipe-item class="big" style="overflow:scroll">
-			<shoplistPage1></shoplistPage1>
-		</swipe-item>
-		<swipe-item class="big" style="overflow:scroll">
-			<shoplistPage2></shoplistPage2>
-		</swipe-item>
-		<swipe-item class="big" style="overflow:scroll">
 			<shoplistPage3></shoplistPage3>
 		</swipe-item>
 		<swipe-item class="big" style="overflow:scroll">
 			<shoplistPage4></shoplistPage4>
 		</swipe-item>
+		<swipe-item class="big" style="overflow:scroll">
+			<shoplistPage1></shoplistPage1>
+		</swipe-item>
+		<swipe-item class="big" style="overflow:scroll">
+			<shoplistPage2></shoplistPage2>
+		</swipe-item>
+
 	</swipe>
 </template>
 
