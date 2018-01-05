@@ -45,11 +45,11 @@ export default new Router({
       component: Special,
     },
     {
-      path: 'look/:id',
+      path: '/look/:id',
       component: Look,
     },
     {
-      path: 'login',
+      path: '/login',
       component: Login,
     },
     {

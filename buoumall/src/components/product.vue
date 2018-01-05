@@ -4,12 +4,13 @@
 			<div class="head-back" style="float:left">
 				<i class="iconfont">&#xe697;</i>
 			</div>
-			<div style="float:right" class="head-more">
+			
+			<div style="float:right" class="head-handbag">
 				<i class="iconfont">&#xe699;</i>
 			</div>
-			<div style="float:right" class="head-handbag">
+			<router-link to="/login" style="float:right" class="head-more" tag="div">
 				<i class="iconfont">&#xe6d1;</i>
-			</div>
+			</router-link>
 		</div>
 		<div style="overflow:scroll" class="all">
 			<swiper :options="swiperOption" class="my-swipe">
@@ -57,7 +58,7 @@
 import 'swiper/dist/css/swiper.css';
 import axios from "axios";
 import {swiper, swiperSlide} from "vue-awesome-swiper";
-// import { Loading } from 'element-ui';
+
 export default{
 	name: 'product',
 	data () {
@@ -125,7 +126,7 @@ export default{
 		}
 	}
 	.head-handbag{
-		margin-right:5px;
+		margin-left:5px;
 		.iconfont{
 			font-size: 20px;
 		}
