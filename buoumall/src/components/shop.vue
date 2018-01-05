@@ -1,7 +1,7 @@
 <template>
-<div >
+<div style="overflow:hidden">
 	<headers></headers>
-	<div>
+	<div class="main">
 		<ul class="nav">
 			<li class="active click"  v-change="1" @click="componentChange(0)"><span>推荐</span></li>
 			<li v-for="(data,index) in shoplistData" v-change="index+2" class="click" @click="componentChange(index+1)"><span>{{data.name}}</span></li>
@@ -105,32 +105,34 @@ Vue.directive("change",function(el,binding){
   }
 }
 
+.main{
+	margin-top:0.40rem;
+	flex:1;
+}
 
-	div{
-		.nav{
-			display:flex;
-			justify-content: space-between;
-			padding:0;
-			border-top:2px solid #ccc;
-			background:#ffffff;
-			li{
-				text-align: center;
-				list-style: none;
-				width:25%;
-				height:0.46rem;
-				line-height:0.46rem;
-				span{
-					height:0.42rem;
-					display:inline-block;
-					font-size:16px;
-					color:#888;
-				}
+	.nav{
+		display:flex;
+		justify-content: space-between;
+		padding:0;
+		border-top:2px solid #ccc;
+		background:#ffffff;
+		li{
+			text-align: center;
+			list-style: none;
+			width:25%;
+			height:0.46rem;
+			line-height:0.46rem;
+			span{
+				height:0.42rem;
+				display:inline-block;
+				font-size:16px;
+				color:#888;
 			}
-			.active{
-				span{
-					border-bottom: 2px solid #ec9182;
-					color:#ec9182;
-				}
+		}
+		.active{
+			span{
+				border-bottom: 2px solid #ec9182;
+				color:#ec9182;
 			}
 		}
 	}
