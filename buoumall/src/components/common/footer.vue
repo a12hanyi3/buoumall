@@ -38,10 +38,14 @@ export default {
   color:#f00;
 }
  .el-footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
  	display: flex;
    background-color: #fff;
    color: #333;
    justify-content: space-between;
+   width: 100%;
  }
 
 

@@ -55,10 +55,10 @@ Vue.directive('clk',function(el,binding,vnode){
     for(var i=0;i<p.length;i++){
       p[i].index = i;
       p[i].setAttribute('class','');
-      //swp[i].setAttribute('class','mint-swipe-item')
+      swp[i].setAttribute('class','mint-swipe-item')
     }
     this.setAttribute('class','active');
-    //swp[this.index].setAttribute('class','mint-swipe-item is-active');
+    swp[this.index].setAttribute('class','mint-swipe-item is-active');
     // swp[this.index].style.transform='translate3d(-3.6rem,0,0)'
     // swp[this.index].style.transition='transform 0.5s linear'
   }
@@ -78,6 +78,8 @@ export default {
 <style lang="scss" scoped>
 #all{
   flex:1;
+  margin-top: 0.4rem;
+  margin-bottom: 0.49rem;
 }
 .nav{
   display: flex;
@@ -88,18 +90,19 @@ export default {
   padding:0 0.5rem;
 }
 .mint-swipe{
-  height:5.34rem;
+  //height:5.7rem;
   background: #e4e5ea;
 }
 .active{
   color: #f00;
 }
-#app,.el-container {
+.el-container {
   height:100%;
+
 } 
 
 .el-container{
-  display: flex;
+
   flex-direction:column;
 }
 </style>

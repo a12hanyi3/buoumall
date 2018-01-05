@@ -19,6 +19,9 @@ h1{
   font-size: 20px;
 }
 .el-header {
+  position: fixed;
+  top: 0;
+  left: 0;
    display: flex;
    background-color: #fff;
    color: #333;

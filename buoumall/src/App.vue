@@ -26,6 +26,9 @@ html,body{
 ul{
 	list-style: none;
 }
+#app{
+	height: 100%;
+}
 </style>
 
 
