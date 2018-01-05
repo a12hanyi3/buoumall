@@ -7,7 +7,7 @@ import Designer from '@/components/designer'
 import Special from '@/components/special'
 import Product from '@/components/product'
 import Design from '@/components/design'
-// import Look from '@/components/look'
+import Look from '@/components/look'
 
 Vue.use(Router)
 

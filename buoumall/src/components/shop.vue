@@ -18,6 +18,9 @@
 </template>
 
 <script>
+
+
+
 require('vue-swipe/dist/vue-swipe.css');
 import Vue from 'vue';
 import axios from "axios";
@@ -28,7 +31,6 @@ import shoplist from "@/components/shoplist.vue";
 import shoplist1 from "@/components/shoplist1.vue";
 import shoplist2 from "@/components/shoplist2.vue";
 import shoplist3 from "@/components/shoplist3.vue";
-
 
 
 export default{

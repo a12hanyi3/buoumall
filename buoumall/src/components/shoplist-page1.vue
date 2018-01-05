@@ -25,15 +25,10 @@
 	</div>
 </div>
 </template>
-
-
-
 <script>
-
 import axios from "axios";
 import router from "@/router";
 import swiper from "@/components/shoplist-swiper.vue";
-// import { Indicator } from "mint-ui";
 
 
 export default{
@@ -48,10 +43,10 @@ export default{
 		axios.post("/banner/v1/list", "count=5&site=5").then(res=>{
 		  this.shoplistup =res.data.data;
 		});
-		//
 		axios.post("product/findGuessYouLikeProducts", "memberToken=&categoryId=&pageNo=1&pageSize=20").then(res=>{
 		  this.shoplistdown =res.data.data.list;
 		});
+		
 	},
 	methods:{
 		splctId:function(index){
@@ -59,7 +54,7 @@ export default{
 			var id = this.shoplistup[index].link;
 			id = Reg.test(id);
 			return "/special/"+RegExp.$1;
-		}
+		},
 	},
 	components:{
 		swiper,

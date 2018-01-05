@@ -11,16 +11,31 @@
 				<i class="iconfont">&#xe6d1;</i>
 			</div>
 		</div>
-		<div style="overflow:scroll">
-			<swiper :options="swiperOption" class="my-swipe" style="overflow:scroll">
+		<div style="overflow:scroll" class="all">
+			<swiper :options="swiperOption" class="my-swipe">
 			   <swiperSlide v-for="data in swipers" :key="data">
 			   	<img :src="'http://image.buoumall.com/'+data">
 			   </swiperSlide>
 			   <div class="swiper-pagination" slot="pagination"></div>
 			</swiper>
-
+			<div class="product-infos">
+				<h1></h1>
+				<div class="product-price"></div>
+			</div>
+			<div class="product-tips">
+				<span><i class="iconfont">&#xe6b1;</i>交易担保</span>
+				<span><i class="iconfont">&#xe6b1;</i>正品保障</span>
+				<span><i class="iconfont">&#xe6b1;</i>七天退换</span>
+			</div>
+			<div class="prod-designer">
+				<h2>设计师</h2>
+				<img :src="avatar"/>
+				<div class="des-infos">
+					<span class="nickname">{{seller.nickname}}<i class="iconfont">&#xe6a7;</i></span>
+					<span class="signature">{{seller.signature}}</span>
+				</div>
+			</div>
 		</div>
-
 		<div class="view-footer">
 			<div class="footer-icon">
 				<div>
@@ -33,6 +48,7 @@
 				<span class="btn-buy">立即购买</span>
 			</div>
 		</div>
+
  	</div>
 </template>
 
@@ -40,37 +56,42 @@
 
 import 'swiper/dist/css/swiper.css';
 import axios from "axios";
-import router from "@/router";
-import {swiper, swiperSlide} from "vue-awesome-swiper"
-
+import {swiper, swiperSlide} from "vue-awesome-swiper";
+// import { Loading } from 'element-ui';
 export default{
 	name: 'product',
 	data () {
 		return {
 			params:"",
 			swipers:[],
-
+			avatar:null,
+			seller:[],
 			swiperOption: {
 		        pagination: {
 		           el: '.swiper-pagination'
 		         },
-		       },		       
+		    },
+		    loading:true,		       
 		}
 	},
 	mounted() {
+		// loading.open();
 		this.params = this.$route.params.id;
 		axios.get("/v2/product/get/"+this.params).then(res=>{
 		  this.swipers =res.data.data.mainPics;
+		  this.seller = res.data.data.seller;
+		  this.avatar = 'http://image.buoumall.com/'+res.data.data.seller.avatar;
+		  // console.log(this.avatar);
+		  // loading.close();
 		});
 	},
 	components:{
-
 		swiper,
 		swiperSlide,
 	},
 	computed: {
 
-	    },
+	},
  
 	methods: { 
 
@@ -92,7 +113,7 @@ export default{
 		width:0.3rem;
 		height:0.3rem;
 		border-radius: 50%;
-		background:#ddd;
+		background:#ccc;
 		text-align: center;
 		line-height:0.3rem;
 		opacity:.4;
@@ -115,11 +136,88 @@ export default{
 		}
 	}
 }
+div{
+	box-sizing: border-box;
+}
+.all{
+	margin-bottom:0.49rem;
+}
+.product-infos{
+	width:100%;
+	height:0.87rem;
+	padding:0.14rem;
+}
+.product-tips{
+	width:100%;
+	padding:0.14rem;
+	height:0.46rem;
+	span{
+		margin-right: .3rem;
+		font-size: .12rem;
+		color:#999;
+		.iconfont{
+			margin-right:0.04rem;
+		}
+	}
+}
+.prod-designer{
+	margin:0.1rem 0;
+	width:100%;
+	height:1.33rem;
+	padding:0 0.14rem 0.14rem;
+	h2{
+		height:0.59rem;
+		padding: 0.2rem 0;
+		font-size:0.16rem;
+		font-weight:700;
+		color:#333;
+		box-sizing: border-box;
+	}
+	img{
+		width:0.6rem;
+		height:0.6rem;
+		border-radius:50%;
+		float:left;
+	}
+	.des-infos{
+		width:2.75rem;
+		float:right;
+		height: 0.6rem;
+		padding-right:0.15rem;
+		span{
+			display:block;
+		}
+		.nickname{
+			font-size:0.16rem;
+			height:0.35rem;
+			line-height: 0.35rem;
+			color:#666;
+			.iconfont{
+				float:right;
+				height:0.16rem;
+				margin-top:0.15rem;
+			}
+		}
+		.signature{
+			font-size:0.12rem;
+			height:0.25rem;
+			line-height: 0.25rem;
+			color: #aaa;
+			overflow: hidden;
+			text-overflow: ellipsis;
+			white-space: nowrap;
+			width:2.6rem;
+		}
+
+	}
+}
+
 .view-footer{
 	height:0.49rem;
 	width:100%;
 	position: fixed;
 	bottom: 0;
+	background:#fff;
 	.footer-icon{
 		float:left;
 		width:1.35rem;
@@ -138,13 +236,18 @@ export default{
 		height:100%;
 		font-size:16px;
 		color:#fff;
-		div{
-			width:1.2rem;
+		span{
+			display:inline-block;
+			width:1.17rem;
 			text-align: center;
+			height:100%;
 			line-height:0.49rem;
 		}
 		.btn-cart{
 			background:#5c5f67;
+		}
+		.btn-buy{
+			background:#ec9182;
 		}
 	}
 }

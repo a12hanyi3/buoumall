@@ -7,7 +7,7 @@
 					<router-link tag="span" activeClass="active" to="/shop">全部设计师 〉 </router-link></div>
 				<div id="style-list">
 						<ul>
-							<router-link tag="li" to="/shop" v-for="data in datalist">
+							<router-link tag="li" to="/shop" v-for="data in datalist" :key="data.id">
 								<img :src="'http://image.buoumall.com/'+data.background"/>
 								<p>{{data.name}}</p>
 								<span>{{data.ename}}</span>
@@ -19,7 +19,7 @@
 					<span class="right">换一批</span>	</div>
 				<div id="design-list">
 				<ul>				
-					<router-link tag="li" to="/shop" v-for="data in designlist">
+					<router-link tag="li" to="/shop" v-for="data in designlist" :key="data.id">
 						<div class="bag">
 							<div class="pic">
 								<img :src="'http://image.buoumall.com/'+ data.avatar"/>

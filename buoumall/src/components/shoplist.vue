@@ -47,13 +47,11 @@ export default{
 		shoplistPage2,
 		shoplistPage3,
 		shoplistPage4,
-
 	}
 }	
 </script>
 
 <style lang="scss" scoped>
-
 	.my-swipe{
 		height:5.3rem;
 		width:100%;
