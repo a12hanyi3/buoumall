@@ -19,14 +19,15 @@ h1{
   font-size: 20px;
 }
 .el-header {
-  position: fixed;
-  top: 0;
-  left: 0;
+   z-index:99;
+   top:0px;
+   left:0px;
+   position: fixed;
    display: flex;
    background-color: #fff;
    color: #333;
    line-height: 0.4rem;
-
+   border-bottom:2px solid #ccc;
    width: 100%;
    justify-content: space-between;
  }
