@@ -58,8 +58,6 @@ Vue.directive('clk',function(el,binding,vnode){
       swp[i].setAttribute('class','mint-swipe-item')
     }
     this.setAttribute('class','active');
-    console.log(binding.value)
-    console.log(swp[this.index].getAttribute('class'))
     swp[this.index].setAttribute('class','mint-swipe-item is-active');
     // swp[this.index].style.transform='translate3d(-3.6rem,0,0)'
     // swp[this.index].style.transition='transform 0.5s linear'

@@ -58,7 +58,6 @@
 import axios from "axios";
 import Vue from "vue";
 Vue.directive('imgs',function(el,binding,vnode){
-			console.log(binding.value.length)
 			for(let i=0; i<10000; i++){
 				if(binding.value.length == 1){
 					el.setAttribute('class','img-col-1');

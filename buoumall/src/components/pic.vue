@@ -48,7 +48,6 @@ export default {
   },
   mounted(){
   	axios.post('/v2/index/recommend','memberToken=&pageNo=1&pageSize=20').then(res=>{
-  		console.log(res.data.data.list);
   		this.datalist=res.data.data.list})
   }
 }

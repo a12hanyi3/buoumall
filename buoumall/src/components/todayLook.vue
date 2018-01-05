@@ -23,7 +23,6 @@ export default {
   },
   mounted(){
   	axios.post('/look/list','memberToken=&pageNum=1&pageSize=20').then(res=>{
-  		console.log(res.data.data.list);
   		this.datalist=res.data.data.list})
   }
 }
