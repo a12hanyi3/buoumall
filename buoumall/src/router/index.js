@@ -1,10 +1,12 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import Home from '@/components/home'
+import TodayLook from'@/components/todayLook'
 import Shop from '@/components/shop'
 import Designer from '@/components/designer'
 import Special from '@/components/special'
 import Product from '@/components/product'
+import Design from '@/components/design'
 // import Look from '@/components/look'
 
 Vue.use(Router)
@@ -17,8 +19,16 @@ export default new Router({
       component: Home
     },
     {
+    	path: '/todaylook',
+    	component: TodayLook
+    },
+    {
     	path: '/shop',
     	component: Shop
+    },
+    {
+      path: '/design',
+      component: Design
     },
     {
       path: '/designer/:id',
@@ -32,10 +42,10 @@ export default new Router({
       path: '/special/:id',
       component: Special,
     },
-    // {
-    //   path: 'look/:id',
-    //   componet: Look,
-    // },
+    {
+      path: 'look/:id',
+      component: Look,
+    },
     {
       path: '*',
       redirect: '/',
