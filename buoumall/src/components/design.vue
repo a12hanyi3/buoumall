@@ -246,6 +246,9 @@ export default {
 					}
 					
 				}
+				li:nth-last-child(1){
+					margin-bottom:0.49rem;
+				}
 			}
 		}
 	}
