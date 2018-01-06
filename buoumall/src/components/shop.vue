@@ -3,7 +3,6 @@
 	<headers></headers>
 	<div class="main">
 		<ul class="nav">
-<!-- 			<li class="active click"  v-change="1" @click="componentChange(0)"><span>推荐</span></li> -->
 			<li v-for="(data,index) in shoplistData" class="click" @click="componentChange(index)"><span>{{data.name}}</span></li>
 		</ul>
 		<transition  name="bounce" mode="out-in">
@@ -54,7 +53,8 @@ export default{
 				lists[0].className = "click active"
 
 		})
-		  	
+		var height = window.innerHeight*0.82
+		document.querySelector('.my-swipe').style.height = height+"px"
 	},
 	components: {
 		shoplist,
@@ -101,7 +101,7 @@ export default{
 }
 
 .main{
-	flex:1;
+
 }
 
 	.nav{

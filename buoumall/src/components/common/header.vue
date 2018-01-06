@@ -1,7 +1,10 @@
 <template>
   <div style="height:0.4rem">
 
-    <el-header style="height:0.4rem"><i class="iconfont">&#xe5a4;</i><h1>MAGIC CLOSET</h1><i class="iconfont">&#xe66f;</i></el-header>
+    <el-header style="height:0.4rem">
+    <router-link to="/shop" class="iconfont" tag="i">&#xe5a4;</router-link>
+    <h1>MAGIC CLOSET</h1>
+    <router-link to="/login" class="iconfont" tag="i">&#xe66f;</router-link></el-header>
 
   </div>
 </template>

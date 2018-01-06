@@ -6,19 +6,23 @@
 		</div>
 		<div class="photolist"> 
 			<ul>
-				<router-link v-for="data in datalist" tag="li" to="/design" :key="data.id">
+				<router-link v-for="data in datalist" tag="li" to="/shop" :key="data.id">
 					<div class="pic"><img :src="'http://image.buoumall.com/'+ data.picture"/></div>
-					<div class="article">{{data.brandName}}</div>
+					<div class="black"></div>
+					<h2>{{data.brandName}}</h2>
+					<img class="see":src="'http://image.buoumall.com/'+ data.avatar"/>
+					<p class="name">{{data.nickname}}</p>
+					<p class="follw">{{data.fansNum+"人关注"}}</p>
+					<button class="btn">+关注</button>
+					<p class="jiesao">{{data.signature}}</p>
 				</router-link>
 			</ul>
+
 		</div>
-		<footers></footers>
 	</div>
 </template>
 		
 <script>
-import footers from "@/components/common/footer"
-
 import axios from "axios";
 export default {
 
@@ -36,17 +40,19 @@ export default {
   		this.datalist = res.data.data.list
   	})
   },
-  components:{
-  	footers,
-  },
 };
 </script>
 
 <style lang="scss" scoped>
 #all{
 	#header{
+		position:fixed;
+		top:0;
+		left:0;
+		z-index:9999;
 		height:0.4rem;
-		border-bottom:1px solid #CCC;
+		background:white;
+		width:100%;
 		section{
 			float:left;
 			line-height:0.4rem;
@@ -67,18 +73,90 @@ export default {
     .photolist{
     	height:2.37rem;
     	width:100%;
-    	ul{
-    		li{
-    			.pic{
-    				width:100%;
-    				height:1.87rem;
-    				overflow:hidden;
-    				img{
+	    		ul{
+	    			li{
+	    				position:relative;
+	    				top:0;
+	    				left:0;
 	    				width:100%;
-    				}
-    			}
-    		}
-    	}
-    }
+	    				height:2.37rem;
+	    				.pic{
+	    					width:100%;
+	    					height:1.87rem;
+	    					overflow:hidden;
+	    					img{
+	    						width:100%;
+	    					}
+	    				}
+	    				.black{
+	    					z-index:1;
+	    					position:absolute;
+	    					opacity:.6;
+	    					top:0;
+	    					left:0;
+	    					width:100%;
+	    					height:1.87rem;
+	    					background:#000;
+	    				}
+	    				h2{
+	    					z-index:2;
+	    					color:white;
+	    					position:absolute;
+	    					top:0.65rem;
+	    					left:0;
+	    					padding-left:0.14rem;
+	    					font-weight:100;	    				
+	    				}
+	    				.see{
+	    					z-index:2;
+	    					width:0.5rem;
+	    					height:0.5rem;
+	    					position:absolute;
+	    					top:1.2rem;
+	    					border:2px solid #ccc;
+	    					left:0;
+	    					border-radius:50%;
+	    					margin-left:0.14rem;
+	    					font-weight:100;	    				
+	    				}
+	    				.name{
+	    					z-index:2;
+	    					position:absolute;
+	    					top:1.2rem;
+	    					color:white;
+	    					font-size:0.16rem;
+	    					left:0.8rem;
+	    				}
+	    				.follw{
+	    					z-index:2;
+	    					position:absolute;
+	    					top:1.5rem;
+	    					color:white;
+	    					font-size:0.12rem;
+	    					left:0.8rem;
+	    				}
+	    				.btn{
+	    					z-index:2;
+	    					right:0;
+	    					position:absolute;
+	    					top:1.45rem;
+	    					border:0;
+	    					color:white;
+	    					outline: none;
+	    					background:#efb3a9;
+	    					width:0.5rem;
+	    					height:0.25rem;
+	    					margin-right:0.15rem;
+	    					border-radius:0.05rem;
+	    				}
+	    				.jiesao{
+	    					color:#9e9e9e;
+	    					font-size:0.14rem;
+	    					line-height:0.5rem;
+	    					padding-left:0.14rem;
+	    				}
+	    			}
+	    		}
+    	    }
 }
 </style>

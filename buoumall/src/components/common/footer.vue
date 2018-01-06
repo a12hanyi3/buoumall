@@ -14,11 +14,11 @@
     		<i class="iconfont">&#xe5a4;</i>
     		<p>商店</p>
     	</router-link>
-    	<router-link to="/product" tag="div" activeClass="active">
+    	<router-link to="/login" tag="div" activeClass="active">
     		<i class="iconfont">&#xe66f;</i>
     		<p>购物袋</p>
     	</router-link>
-    	<router-link to="/special" tag="div" activeClass="active">
+    	<router-link to="/login" tag="div" activeClass="active">
     		<i class="iconfont">&#xe63a;</i>
     		<p>我</p>
     	</router-link>

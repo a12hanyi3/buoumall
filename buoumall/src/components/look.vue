@@ -38,6 +38,21 @@
 		</div>
 	</div>
 </div>
+<div class="middle">   &nbsp;&nbsp;搭配商品</div>
+    <ul>
+      <li v-for="(data,id) in tableinfo" :key="data.id">
+            <aside>
+        <img :src="'http://image.buoumall.com/'+data.listPic">
+            </aside>
+        <span>{{data.name}}</span>
+        <article>
+          ￥{{data.price}}
+        </article>
+        <div class="buy">立即购买</div>
+      </li>
+    </ul>           
+</div>
+
 </div>
 </template>
 	
@@ -69,6 +84,8 @@ export default {
         datalist3:'',
         datalist4:'',
         datalist5:'',
+        tableinfo:[]
+
     }
   },
     components: {
@@ -88,7 +105,8 @@ export default {
 		this.datalist2=res.data.data.publishTime
 		this.datalist3=res.data.data.viewNum
 		this.datalist4=res.data.data.commentNum
-		this.datalist5=res.data.data.likeNum
+		this.datalist5=res.data.data.likeNum          
+    this.tableinfo = res.data.data.linkList;
     Indicator.close()
   	})
   }
@@ -185,6 +203,79 @@ export default {
     	}
     }
 }
+
+img{
+  display: block;
+  vertical-align: middle;
+  width: 100%;
+  border:0;
+}
+ul{
+  margin-top: 5px;
+  margin-bottom:0.49rem;
+
+}
+.middle{
+  border-radius: 2px;
+  width: 100%;
+  height: 40px;
+  border-bottom: 1px solid #ccc;
+  letter-spacing: 4px;
+  font-weight: bold;
+  line-height: 40px; 
+  margin-bottom:0.49rem;
+}
+span{
+  display: inline-block;
+  margin-left: 20px;
+  margin-top: 2%;
+ height: 40px;
+ line-height: 40px;
+}
+aside{
+
+  height: 150px;
+  line-height: 150px;
+  width: 110px;
+  float: left;
+}
+aside img{
+  margin-top: 10%;
+   border-radius: 5px;
+}
+li{
+  position: relative;
+  border-bottom: 1px solid #ccc;
+  width: 100%;
+  height: 170px;
+}
+p{
+  margin-top: 20px;
+}
+article{
+  position: absolute;
+  bottom: 10%;
+  left: 35%;
+  color: red;
+}
+.buy{
+  position: absolute;
+  bottom: 10%;
+  right: 5%;
+  border-radius: 5px;
+  background-color: #efb3a9;
+  color: #fff;
+  width: 25%;
+  height:20%;
+  line-height:32px;
+  text-align: center;
+}
+.md{
+  background-color: #ccc;
+  width: 100%;
+  height: 10px;
+}
+
  @font-face {
   font-family: 'iconfont';
   src: url('../assets/fontx/iconfont.eot');

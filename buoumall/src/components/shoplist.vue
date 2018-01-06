@@ -1,5 +1,5 @@
 <template>
-	<swipe class="my-swipe" :auto="0" :showIndicators="false" >
+	<swipe class="my-swipe" :auto="0" :showIndicators="false" style="height:75%">
 		<swipe-item class="big" style="overflow:scroll">
 			<shoplistPage1></shoplistPage1>
 		</swipe-item>
@@ -38,7 +38,6 @@ export default{
 		}
 	},
 	mounted() {
-		
 	},
 	components:{
 		"swipe" : Swipe,
@@ -53,7 +52,7 @@ export default{
 
 <style lang="scss" scoped>
 	.my-swipe{
-		height:5.3rem;
+		// height:5.3rem;
 		width:100%;
 		text-align:center;
 		img{
