@@ -46,6 +46,7 @@ import Vue from "vue";
 import axios from "axios";
 import 'swiper/dist/css/swiper.css';
 import { swiper, swiperSlide } from 'vue-awesome-swiper';
+import {Indicator} from "mint-ui"
 export default {
 
   name: 'look',
@@ -80,7 +81,7 @@ export default {
   	}
   },
   mounted(){
-  	
+  	Indicator.open()
   	//http://api.buoumall.com/look/detail
   	axios.post('/look/detail','memberToken=&lookId='+this.$route.params.id).then(res=>{
   		this.datalist=res.data.data.lookDetails
@@ -88,6 +89,7 @@ export default {
 		this.datalist3=res.data.data.viewNum
 		this.datalist4=res.data.data.commentNum
 		this.datalist5=res.data.data.likeNum
+    Indicator.close()
   	})
   }
 }
