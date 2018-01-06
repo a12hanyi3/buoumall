@@ -4,27 +4,33 @@
     <el-container>
       <headers></headers>
         <div id= "all">
-        <div class="nav">
-          <p class="active" v-clk="'0'">今日LOOK</p>
-          <p v-clk="'1'">画报</p>
-          <p v-clk="'2'">专访</p>
-          <p v-clk="'3'">动态</p>
-        </div>
-        <mt-swipe :auto="0" :continuous="false" :showIndicators="false">
-          <mt-swipe-item style="overflow-Y: auto;overflow-X:hidden"><todayLook></todayLook></mt-swipe-item>
-          <mt-swipe-item style="overflow-Y: auto;overflow-X:hidden"><pic></pic></mt-swipe-item>
-          <mt-swipe-item style="overflow-Y: auto;overflow-X:hidden"><interview></interview></mt-swipe-item>
-          <mt-swipe-item style="overflow-Y: auto;overflow-X:hidden"><trends></trends></mt-swipe-item>
-        </mt-swipe>
+
+        <swiper :options="swiperOption" ref="mySwiper" style="height:75%">
+
+            <div class="swiper-pagination"  slot="pagination"></div>
+
+
+            <swiperSlide  style="overflow-Y: auto;overflow-X:hidden">
+              <todayLook></todayLook>
+            </swiperSlide>
+            <swiperSlide  style="overflow-Y: auto;overflow-X:hidden">
+              <pic></pic>
+            </swiperSlide>
+            <swiperSlide  style="overflow-Y: auto;overflow-X:hidden">
+              <interview></interview>
+            </swiperSlide>
+            <swiperSlide  style="overflow-Y: auto;overflow-X:hidden">
+              <trends></trends>
+            </swiperSlide>
+
+       </swiper>
         </div>
       <footers></footers>
     </el-container>
 
-
-
-
 </template>
 <script>
+import { Indicator } from 'mint-ui';
 import todayLook from "./todayLook";
 import pic from "./pic";
 import Vue from 'vue';
@@ -32,52 +38,56 @@ import headers from "./common/header";
 import footers from "./common/footer";
 import interview from "./interview";
 import trends from "./trends";
-// Vue.directive('swp',function(el,binding,vnode){
-//   window.onload=function(){
-//     var swpAll = document.querySelector('.mint-swipe-indicators');
-//     swpAll.style.display='flex';
-//     var swp = document.querySelectorAll('.mint-swipe-indicators .mint-swipe-indicator');
-//       swp[0].innerHTML='今日LOOK';
-//       swp[1].innerHTML='画报';
-//       swp[2].innerHTML='专访';
-//       swp[3].innerHTML='动态';
-//       for(var i=0;i<swp.length;i++){
-//         //swp[i];
-//       }
-//   }
-  
+import 'swiper/dist/css/swiper.css';
+import { swiper, swiperSlide } from 'vue-awesome-swiper';
 
-// })
-Vue.directive('clk',function(el,binding,vnode){
-  el.onclick=function(){
-    var swp = document.querySelectorAll('.mint-swipe-item');
-    var p = document.querySelectorAll('.nav p');
-    for(var i=0;i<p.length;i++){
-      p[i].index = i;
-      p[i].setAttribute('class','');
-      swp[i].setAttribute('class','mint-swipe-item')
-    }
-    this.setAttribute('class','active');
-    swp[this.index].setAttribute('class','mint-swipe-item is-active');
-    // swp[this.index].style.transform='translate3d(-3.6rem,0,0)'
-    // swp[this.index].style.transition='transform 0.5s linear'
-  }
-})
+
 export default {
   name: 'home',
+  data () {
+    return {
+      swiperOption: {
+          pagination: {
+             el: '.swiper-pagination',
+             clickable: true,
+             clickableClass : 'my-pagination-clickable',
+            renderBullet: function (index, className) {
+              var arr=['今日LOOK','画报','专访','动态']
+              var pagspan = '<span class="' + className + ' bullet">' + arr[index] + '</span>';
+          return pagspan;
+            } 
+        },
+        },
+
+    }
+  },
+  mounted(){
+    var bullet =document.querySelectorAll('.swiper-pagination-bullet')
+    for(var i=0;i<bullet.length;i++){
+      bullet[i].style.width='20%'
+      bullet[i].style.height='auto'
+      bullet[i].style.borderRadius='0'
+      bullet[i].style.background='#fff'
+      bullet[i].style.fontSize='0.14rem'
+    }
+  },
   components:{
     todayLook,
     pic,
     headers,
     footers,
     interview,
-    trends
+    trends,
+    swiper,
+    swiperSlide
   },
 }
 </script>
 <style lang="scss" scoped>
 #all{
-  flex:1;
+  position: fixed;
+  width: 100%;
+  height: 100%;
   margin-top: 0.4rem;
   margin-bottom: 0.49rem;
 }
@@ -90,7 +100,6 @@ export default {
   padding:0 0.5rem;
 }
 .mint-swipe{
-  //height:5.7rem;
   background: #e4e5ea;
 }
 .active{
@@ -104,5 +113,18 @@ export default {
 .el-container{
 
   flex-direction:column;
+}
+.swiper-pagination{
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 10;
+  height:0.44rem;
+}
+
+
+
+.swiper-container{
+  padding-top: .4rem;
 }
 </style>

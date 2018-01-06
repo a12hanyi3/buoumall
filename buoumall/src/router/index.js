@@ -33,7 +33,7 @@ export default new Router({
       component: Design
     },
     {
-      path: '/designer/:id',
+      path: '/designer/:id/:name',
       component: Designer,
     },
     {

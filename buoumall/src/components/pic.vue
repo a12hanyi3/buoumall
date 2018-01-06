@@ -36,6 +36,7 @@
 </template>
 
 <script>
+import { Indicator } from 'mint-ui';
 import axios from "axios";
 export default {
 
@@ -47,8 +48,10 @@ export default {
     }
   },
   mounted(){
+  	Indicator.open();
   	axios.post('/v2/index/recommend','memberToken=&pageNo=1&pageSize=20').then(res=>{
   		this.datalist=res.data.data.list})
+  	Indicator.close();
   }
 }
 </script>

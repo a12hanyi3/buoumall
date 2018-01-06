@@ -101,7 +101,6 @@ export default{
 }
 
 .main{
-	margin-top:0.40rem;
 	flex:1;
 }
 

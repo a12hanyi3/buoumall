@@ -7,7 +7,7 @@
 					<router-link tag="span" activeClass="active" to="/shop">全部设计师 〉 </router-link></div>
 				<div id="style-list">
 						<ul>
-							<router-link tag="li" to="/shop" v-for="data in datalist" :key="data.id">
+							<router-link v-for="data in datalist" tag="li" :to="'/designer/'+data.id+'/'+data.name"  :key="data.id">
 								<img :src="'http://image.buoumall.com/'+data.background"/>
 								<p>{{data.name}}</p>
 								<span>{{data.ename}}</span>
@@ -16,7 +16,7 @@
 						</ul></div>
 				<div id="style-head">
 					<span class="left">本周设计师人气榜</span>
-					<span class="right">换一批</span>	</div>
+					<span class="right" @click="handleclick">换一批</span>	</div>
 				<div id="design-list">
 				<ul>				
 					<router-link tag="li" to="/shop" v-for="data in designlist" :key="data.id">
@@ -26,7 +26,7 @@
 							</div>
 							<div class="name">
 								<span class="dsn">{{data.nickname}}</span>
-								<span class="btn">关注</span>
+								<span class="btn">+关注</span>
 								<p class="article">{{data.signature}}</p>
 							</div>	
 						</div>	
@@ -53,7 +53,15 @@ export default {
     	designlist:[]
     }
   },
+  methods:{
+  	handleclick(){
+  		axios.post("/designer/v2/findPopularDesigner",'memberToken=&randomPlace='+ Math.floor(Math.random()*1000)).then(res=>{
+  		console.log(res.data.data);
 
+  		this.designlist = res.data.data.designers;
+  	})
+  	}
+  },
   mounted(){
   	//http://api.buoumall.com/designer/v2/getDesignStyleList
   		axios.get("/designer/v2/getDesignStyleList").then(res=>{
@@ -83,7 +91,6 @@ export default {
 			flex-wrap: wrap;
 			//height:5.78rem;
 			#design-style{
-				margin-top:0.4rem;
 				padding:0rem 0.1rem 0rem 0.1rem;
 				height:0.55rem;
 				width:100%;
@@ -125,7 +132,7 @@ export default {
 						}
 						#opa{
 							border-radius:0.1rem;
-							opacity:.6;
+							opacity:.4;
 							position:absolute;
 							top:0px;
 							left:0px;
@@ -148,7 +155,7 @@ export default {
 							text-align: center;
 							z-index:4;
 							position:absolute;
-							top:0.35rem;
+							top:0.4rem;
 							left:50%;
 							transform:translateX(-50%);
 						}
@@ -176,6 +183,7 @@ export default {
 				float:left;
 			}
 			.right{
+				color:#f60;
 				float:right;
 			}
 		}
@@ -207,7 +215,7 @@ export default {
 							height:0.92rem;
 							margin-left:0.1rem;
 							.dsn{
-								width:2.2rem;
+								width:2.1rem;
 								display:block;
 								float:left;
 								font-size:0.18rem;
@@ -223,7 +231,7 @@ export default {
 								background:#efb3a9;
 								color:white;
 								font-size:0.16rem;
-								width:0.4rem;
+								width:0.5rem;
 								text-align:center;
 								height:0.25rem;
 								line-height:0.25rem;

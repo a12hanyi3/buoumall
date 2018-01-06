@@ -1,6 +1,6 @@
 <template>
   <ul>
-  	<li v-for="(data,index) in datalist">
+  	<router-link :to="'/look/'+data.id" tag="li" :key="data.id" v-for="(data,index) in datalist">
   		<div class="look-over">
   			<img :src="'http://image.buoumall.com/'+data.cover" alt="">
   		</div>
@@ -8,11 +8,12 @@
   			<p style="font-size: 12px;font-weight: bold">{{data.title}}</p>
   			<p>{{data.description}}</p>
   		</div>
-  	</li>
+  	</router-link>
   </ul>
 </template>
 
 <script>
+import { Indicator } from 'mint-ui';
 import axios from "axios";
 export default {
   name: 'todayLook',
@@ -22,8 +23,12 @@ export default {
   	}
   },
   mounted(){
+  	Indicator.open();
   	axios.post('/look/list','memberToken=&pageNum=1&pageSize=20').then(res=>{
-  		this.datalist=res.data.data.list})
+  		this.datalist=res.data.data.list
+  		Indicator.close();
+  	})
+  	
   }
 }
 </script>

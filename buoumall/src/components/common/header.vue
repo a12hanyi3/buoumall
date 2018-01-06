@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div style="height:0.4rem">
 
     <el-header style="height:0.4rem"><i class="iconfont">&#xe5a4;</i><h1>MAGIC CLOSET</h1><i class="iconfont">&#xe66f;</i></el-header>
 
@@ -19,15 +19,14 @@ h1{
   font-size: 20px;
 }
 .el-header {
-   z-index:99;
-   top:0px;
-   left:0px;
-   position: fixed;
+  position: fixed;
+  top: 0;
+  left: 0;
    display: flex;
    background-color: #fff;
    color: #333;
    line-height: 0.4rem;
-   border-bottom:2px solid #ccc;
+   z-index:99;
    width: 100%;
    justify-content: space-between;
  }
