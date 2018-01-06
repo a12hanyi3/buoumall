@@ -3,8 +3,8 @@
 	<headers></headers>
 	<div class="main">
 		<ul class="nav">
-			<li class="active click"  v-change="1" @click="componentChange(0)"><span>推荐</span></li>
-			<li v-for="(data,index) in shoplistData" v-change="index+2" class="click" @click="componentChange(index+1)"><span>{{data.name}}</span></li>
+<!-- 			<li class="active click"  v-change="1" @click="componentChange(0)"><span>推荐</span></li> -->
+			<li v-for="(data,index) in shoplistData" class="click" @click="componentChange(index)"><span>{{data.name}}</span></li>
 		</ul>
 		<transition  name="bounce" mode="out-in">
 			<keep-alive>
@@ -39,13 +39,22 @@ export default{
 		return {
 			shoplistData: [],
 			currentView:shoplist,
-			surrent:[shoplist, shoplist1, shoplist2, shoplist3]
+			surrent:[shoplist, shoplist1, shoplist2, shoplist3],
 		}
 	},
 	mounted() {
 		axios.get("/v2/category/getChildCategory").then(res=>{
-		  this.shoplistData =res.data.data;
-		});
+			var obj = {name:'推荐'}
+			res.data.data.unshift(obj)
+		  this.shoplistData =res.data.data
+		  // console.log(res.data.data)
+
+		}).then(()=>{
+			  	var lists = document.querySelectorAll('.click')
+				lists[0].className = "click active"
+
+		})
+		  	
 	},
 	components: {
 		shoplist,
@@ -54,30 +63,15 @@ export default{
 	},
 	methods:{
 		componentChange(index){
-			this.currentView = this.surrent[index];
+			this.currentView = this.surrent[index]
+			var lists = document.querySelectorAll('.click')
+					for(let j=0; j<lists.length; j++){
+						lists[j].className = 'click'
+					}
+					lists[index].className = "click active"
 		}
 	}
 }
-
-Vue.directive("change",function(el,binding){
-	// var swipeItems = document.querySelectorAll('.big');
-	window.onload = function(){
-		setTimeout(function(){
-			var lists = document.querySelectorAll('.click');
-			var swipeItems = document.querySelectorAll('.big');
-			for(let i=0; i<lists.length; i++){
-				// swipeItems[i].style.display = "block";
-				lists[i].onclick = function(){
-					for(let i=0; i<lists.length; i++){
-						lists[i].className = 'click';
-					}
-					lists[i].className = "active";
-					// moveS(i);
-				};
-			}
-		},2000)
-	}
-})
 
 	
 </script>
