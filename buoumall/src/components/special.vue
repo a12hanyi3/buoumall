@@ -1,23 +1,11 @@
 <template>
 	<div >
-<!-- 		<ul class="nav">
-			<li class="active"><span>推荐</span></li>
-			<li v-for="data in shoplistData"><span>{{data.name}}</span></li>
-		</ul>
-
-		<shoplist></shoplist>
-		
-	 -->	
 	</div>
 </template>
 
 <script>
-require('vue-swipe/dist/vue-swipe.css');
+
 import axios from "axios";
-import router from "@/router";
-
-// import shoplist from "@/components/shoplist.vue";
-
 
 
 export default{
@@ -28,46 +16,17 @@ export default{
 		}
 	},
 	mounted() {
-		//http://api.buoumall.com/v2/category/getChildCategory
-		// axios.get("/v2/category/getChildCategory").then(res=>{
-		//   this.shoplistData =res.data.data;
-		// });
+		this.shoplistData = this.$route.params.id
+		axios.get("/v2/product/get/"+this.shoplistData).then(res=>{
+		  // this.swipers =res.data.data.mainPics;
+		  // this.seller = res.data.data.seller;
+		  // this.avatar = 'http://image.buoumall.com/'+res.data.data.seller.avatar;
+		})
 	},
-	components: {
-		// shoplist,
-	}
-
 }
 	
 </script>
 
 <style lang="scss" scoped>
-	// div{
-	// 	.nav{
-	// 		display:flex;
-	// 		justify-content: space-between;
-	// 		padding:0;
-	// 		border-top:2px solid #ccc;
-	// 		background:#ffffff;
-	// 		li{
-	// 			text-align: center;
-	// 			list-style: none;
-	// 			width:25%;
-	// 			height:0.46rem;
-	// 			line-height:0.46rem;
-	// 			span{
-	// 				height:0.42rem;
-	// 				display:inline-block;
-	// 				font-size:16px;
-	// 				color:#888;
-	// 			}
-	// 		}
-	// 		.active{
-	// 			span{
-	// 				border-bottom: 2px solid #ec9182;
-	// 				color:#ec9182;
-	// 			}
-	// 		}
-	// 	}
-	// }
+
 </style>

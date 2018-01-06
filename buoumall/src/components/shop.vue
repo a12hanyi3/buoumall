@@ -54,7 +54,6 @@ export default{
 	},
 	methods:{
 		componentChange(index){
-			console.log(index);
 			this.currentView = this.surrent[index];
 		}
 	}

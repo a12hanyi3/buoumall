@@ -34,7 +34,7 @@ export default new Router({
     },
     {
       path: '/designer/:id',
-      componet: Designer,
+      component: Designer,
     },
     {
       path: '/product/:id',

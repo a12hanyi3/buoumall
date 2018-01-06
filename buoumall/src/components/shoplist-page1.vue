@@ -29,6 +29,7 @@
 import axios from "axios";
 import router from "@/router";
 import swiper from "@/components/shoplist-swiper.vue";
+import { Indicator } from 'mint-ui';
 
 
 export default{
@@ -40,12 +41,17 @@ export default{
 		}
 	},
 	mounted() {
+		var bar1
+		var bar2
+		Indicator.open()
 		axios.post("/banner/v1/list", "count=5&site=5").then(res=>{
-		  this.shoplistup =res.data.data;
-		});
+		  this.shoplistup =res.data.data
+		})
 		axios.post("product/findGuessYouLikeProducts", "memberToken=&categoryId=&pageNo=1&pageSize=20").then(res=>{
-		  this.shoplistdown =res.data.data.list;
-		});
+		  this.shoplistdown =res.data.data.list
+		  Indicator.close()
+		})
+			
 		
 	},
 	methods:{

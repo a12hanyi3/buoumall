@@ -1,7 +1,7 @@
 <template>
 	<div>	
 		<div class="view-header">
-			<div class="head-back" style="float:left">
+			<div class="head-back" style="float:left" @click="back">
 				<i class="iconfont">&#xe697;</i>
 			</div>
 			
@@ -55,9 +55,10 @@
 
 <script>
 
-import 'swiper/dist/css/swiper.css';
-import axios from "axios";
-import {swiper, swiperSlide} from "vue-awesome-swiper";
+import { Indicator } from 'mint-ui';
+import 'swiper/dist/css/swiper.css'
+import axios from "axios"
+import {swiper, swiperSlide} from "vue-awesome-swiper"
 
 export default{
 	name: 'product',
@@ -72,18 +73,18 @@ export default{
 		           el: '.swiper-pagination'
 		         },
 		    },
-		    loading:true,		       
+		    // loading:true,		       
 		}
 	},
 	mounted() {
-		// loading.open();
-		this.params = this.$route.params.id;
+		Indicator.open();
+		this.params = this.$route.params.id
 		axios.get("/v2/product/get/"+this.params).then(res=>{
-		  this.swipers =res.data.data.mainPics;
-		  this.seller = res.data.data.seller;
-		  this.avatar = 'http://image.buoumall.com/'+res.data.data.seller.avatar;
+		  this.swipers =res.data.data.mainPics
+		  this.seller = res.data.data.seller
+		  this.avatar = 'http://image.buoumall.com/'+res.data.data.seller.avatar
 		  // console.log(this.avatar);
-		  // loading.close();
+		  Indicator.close();
 		});
 	},
 	components:{
@@ -95,7 +96,9 @@ export default{
 	},
  
 	methods: { 
-
+		back(){
+			this.$router.go(-1);
+		}
 	} 
 
 }
