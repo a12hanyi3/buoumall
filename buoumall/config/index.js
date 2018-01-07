@@ -46,6 +46,11 @@ module.exports = {
               host: 'api.buoumall.com',
               changeOrigin:true,
         },
+        '/api':{
+            target: 'http://localhost:3000',
+            host: 'localhost:3000',
+            changeOrigin:true,
+        }
     },
 
     // Various Dev Server settings

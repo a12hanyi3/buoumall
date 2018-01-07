@@ -3,20 +3,21 @@
  		<div class="back" @click="back">
  			<i class="iconfont">&#xe697;</i>
  		</div>
- 		<div class="login">登录</div>
+ 		<div class="login">注册</div>
  		<!-- <form action="/api/login" method="post"> -->
  			<div class="con">
- 				<input type="text" name="name" placeholder="用户名" class="name" v-onblurA>
+ 				<input type="text" name="name" placeholder="用户名" class="name" v-onblura>
 
- 				<input type="password" name="password" placeholder="密码" class="password" v-onblurB>
+ 				<input type="password" name="password" placeholder="密码" class="password" v-onblurb>
+ 				<input type="password" name="rspassword" placeholder="重复密码" class="rspassword" v-onblurc>
  			</div>
  			<div class="wrong">
  				
  			</div>
- 			<input type="button" @click='login' value="登录" class="submit">
+ 			<input type="button" @click='register' value="注册" class="submit">
  		<!-- </form> -->
  		<div class="register">
- 			没有账号么？<router-link to="/register" tag="span" class="zhuce">注册</router-link>
+ 			没有账号么？<router-link to="/login" tag="span" class="zhuce">登录</router-link>
  		</div>
  	</div>
 </template>
@@ -26,7 +27,7 @@ import Vue from "vue"
 import axios from "axios"
 import router from "@/router"
 
-Vue.directive("onblurA",function(el,binding){
+Vue.directive("onblura",function(el,binding){
 	el.onblur = function(){
 		var $preg=/^[\w\_]{6,20}$/
 		if(!$preg.test(el.value)){
@@ -38,7 +39,7 @@ Vue.directive("onblurA",function(el,binding){
 	}
 })
 
-Vue.directive("onblurB",function(el,binding){
+Vue.directive("onblurb",function(el,binding){
 	el.onblur = function(){
 		var $preg= /^[a-zA-Z0-9_-]{4,16}$/
 		if(!$preg.test(el.value)){
@@ -49,9 +50,20 @@ Vue.directive("onblurB",function(el,binding){
 		} 
 	}
 })
+Vue.directive("onblurc", function(el,binding){
+	el.onblur = function(){
+		var password = document.querySelector('.password').value
+		var rspassword = document.querySelector('.rspassword').value
+		if(password==rspassword){
+			document.querySelector('.wrong').innerHTML =""
+		}else{
+			document.querySelector('.wrong').innerHTML ="密码不一致"
+		}
+	}
+})
 
 export default {
-  name: 'login',
+  name: 'register',
   data(){
   	return{
 
@@ -61,25 +73,26 @@ export default {
   	back(){
   		this.$router.go(-1)
   	},
-  	login(){
+  	register(){
   		var wrong = document.querySelector('.wrong').innerHTML
   		var username = document.querySelector('.name').value
   		var password = document.querySelector('.password').value
+  		var rspassword = document.querySelector('.rspassword').value
 
-  		if(!wrong&&username&&password){
-  			axios.post('/api/login',`username=${username}&password=${password}`).then(res=>{
+  		if(!wrong&&username&&password&&rspassword){
+  			axios.post('/api/register',`username=${username}&password=${password}`).then(res=>{
   				console.log(res.data)
   				if(!res.data.result){
   					document.querySelector('.wrong').innerHTML=res.data.message
   				}else{
-  					router.push('/')
+  					router.push('/login')
   				}
   			})
   		}
   	}
+  	
 
-
-
+  	
   }
 
 
