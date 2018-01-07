@@ -74,6 +74,9 @@ export default {
     	height:2.37rem;
     	width:100%;
 	    		ul{
+	    			li:nth-child(1){
+	    				margin-top:0.49rem;
+	    			}
 	    			li{
 	    				position:relative;
 	    				top:0;
