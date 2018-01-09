@@ -56,8 +56,6 @@ export default {
   methods:{
   	handleclick(){
   		axios.post("/designer/v2/findPopularDesigner",'memberToken=&randomPlace='+ Math.floor(Math.random()*1000)).then(res=>{
-  		console.log(res.data.data);
-
   		this.designlist = res.data.data.designers;
   	})
   	}
@@ -71,7 +69,6 @@ export default {
   	}),
 
   		axios.get("/designer/v2/findPopularDesigner").then(res=>{
-  		console.log(res.data.data);
 
   		this.designlist = res.data.data.designers;
   	})

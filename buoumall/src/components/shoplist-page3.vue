@@ -3,7 +3,7 @@
 	<div class="ass-categorys">
 		<ul>
 			<li v-for="data in shoplistup" :key="data.id">
-				<img :src="data.cover?'http://image.buoumall.com/'+data.cover:'data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7'" >
+				<img :src="'http://image.buoumall.com/'+data.cover" >
 				<span>{{data.name}}</span>
 			</li>
 		</ul>
